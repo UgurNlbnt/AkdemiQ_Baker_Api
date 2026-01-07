@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36811.4 d17.14
+VisualStudioVersion = 17.14.36811.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BakerApi", "BakerApi\BakerApi.csproj", "{7D64EBCB-3CF9-4580-95C9-96F309072514}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BakerWebUI", "BakerWebUI\BakerWebUI.csproj", "{7CC09B0D-3522-4C24-998D-5751994B6DAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{7D64EBCB-3CF9-4580-95C9-96F309072514}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D64EBCB-3CF9-4580-95C9-96F309072514}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D64EBCB-3CF9-4580-95C9-96F309072514}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CC09B0D-3522-4C24-998D-5751994B6DAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CC09B0D-3522-4C24-998D-5751994B6DAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CC09B0D-3522-4C24-998D-5751994B6DAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CC09B0D-3522-4C24-998D-5751994B6DAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,29 @@
+﻿@using BakerWebUI.Dtos.Chefs
+@model List<ResultChefDto>
+@{
+    Layout = null;
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <table class="table table-hover">
+        <tr>
+            <th>Ad</th>
+            <th>Görev</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ChefId</td>
+                <td>@item.Title</td>
+                <td><a href="#" class="btn btn-danger btn-sm"> Sil </a></td>
+                <td> <a href="#" class="btn btn-warning btn-sm"> Güncelle </a> </td>
+            </tr>
+        }
+    </table>
+    <td> <a href="#" class="btn btn-primary btn-sm"> Yeni Şef Girişi </a> </td>
+</div>
