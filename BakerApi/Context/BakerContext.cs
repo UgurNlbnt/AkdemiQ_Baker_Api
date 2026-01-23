@@ -15,5 +15,6 @@ namespace BakerApi.Context
         //coğul olan veri tabanı tablolarını temsil edecek, 
         public DbSet<Chef> Chefs { get; set; }
         public DbSet<Feature> Features { get; set; }
+        public DbSet<Testimonial> Testimonials { get; set; }
     }
 }
