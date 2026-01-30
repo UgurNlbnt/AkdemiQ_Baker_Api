@@ -46,5 +46,13 @@ namespace BakerApi.Controllers
             _context.SaveChanges();
             return Ok("Şef silme işlemi başarılı bir şekilde gerçekleşti");
         }
+
+        [HttpGet("CountChef")]
+        public IActionResult GetChefProduct()
+        {
+            var totalProduct = _context.Chefs.Count();
+            return Ok(totalProduct);
+
+        }
     }
 }
