@@ -1,0 +1,120 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+@await Component.InvokeAsync("_DefaultHeadComponentPartial")
+
+<body>
+
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" role="status"></div>
+    </div>
+    <!-- Spinner End -->
+    <!-- Topbar Start -->
+    @await Component.InvokeAsync("_DefaultTopbarComponentPartial")
+    <!-- Topbar End -->
+    <!-- Navbar Start -->
+    @await Component.InvokeAsync("_DefaultNavbarComponentPartial")
+    <!-- Navbar End -->
+    <!-- Contact Start -->
+    <section id="contact">
+        <div class="container-xxl py-6">
+            <div class="container">
+                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                    <p class="text-primary text-uppercase mb-2">// Bize Ulaşın</p>
+                    <h1 class="display-6 mb-4">Herhangi bir sorunuz varsa, lütfen bizimle iletişime geçin.</h1>
+                </div>
+
+                <div class="row g-0 justify-content-center">
+                    <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.1s">
+                        
+
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="name" placeholder="Adınız">
+                                        <label for="name">Adınız</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" id="email" placeholder="E-posta Adresiniz">
+                                        <label for="email">E-posta Adresiniz</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="subject" placeholder="Konu">
+                                        <label for="subject">Konu</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Mesajınızı buraya bırakın"
+                                                  id="message" style="height: 200px"></textarea>
+                                        <label for="message">Mesaj</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 text-center">
+                                    <button class="btn btn-primary rounded-pill py-3 px-5" type="submit">
+                                        Mesajı Gönder
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact End -->
+    <!-- Google Map Start -->
+    <div class="container-xxl py-6 px-0 wow fadeInUp" data-wow-delay="0.1s">
+        <iframe class="w-100 mb-n2"
+                style="height: 450px;"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
+                frameborder="0"
+                allowfullscreen
+                aria-hidden="false"
+                tabindex="0">
+        </iframe>
+    </div>
+    <!-- Google Map End -->
+    <!-- Footer Start -->
+    @await Component.InvokeAsync("_DefaultFooterComponentPartial")
+    <!-- Footer End -->
+    <!-- Copyright -->
+    <div class="container-fluid copyright text-light py-4 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a href="/">Your Site Name</a>, All Right Reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    Designed By <a href="https://htmlcodex.com">HTML Codex</a><br />
+                    Distributed By: <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top -->
+    <a href="/" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <!-- Scripts -->
+    @await Component.InvokeAsync("_DefaultScriptComponentPartial")
+
+</body>
+</html>
