@@ -9,5 +9,7 @@ namespace BakerApi.Dto
         public decimal ProductPrice { get; set; }
         public string? ImageUrl { get; set; }
         public string? CategoryName { get; set; }
+
+        
     }
 }

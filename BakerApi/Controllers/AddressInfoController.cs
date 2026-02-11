@@ -19,8 +19,8 @@ namespace BakerApi.Controllers
         [HttpGet]
         public IActionResult GetAddressInfo()
         {
-            var addressInfo = _context.AdressInfos.ToList();
-            return Ok("Adres Bilgisi Başarıyla Eklendi");
+            var addressInfo = _context.AdressInfos.FirstOrDefault();
+            return Ok(addressInfo);
         }
 
         [HttpPost]
