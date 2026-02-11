@@ -38,7 +38,7 @@ namespace BakerApi.Controllers
             return Ok("Şef güncelleme işlemi başarılı bir şekilde gerçekleşti");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
             var value = _context.Chefs.Find(id);

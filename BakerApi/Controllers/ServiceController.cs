@@ -1,4 +1,5 @@
 ﻿using BakerApi.Context;
+using BakerApi.Dto;
 using BakerApi.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,10 +17,21 @@ namespace BakerApi.Controllers
             _context = context;
         }
 
-        [HttpGet]
+        [HttpGet("with_Details")]
         public IActionResult GetAboutWithServiceDetailsList()
         {
-            var abouts = _context.Services.Include(x => x.ServiceDetails).ToList();
+            var abouts = _context.Services.Include(x => x.ServiceDetails).Select(z=> new ServiceWithServiceDetailsDto
+            {
+                ServiceId = z.ServiceId,
+                Title = z.Title,
+                Description = z.Description,
+                ImageUrl = z.ImageUrl,
+                ServiceDetails = z.ServiceDetails.Select(y => new ServiceDetailDto
+                {
+                    Title = y.Title,
+                    Description = y.Description
+                }).ToList()
+            }).ToList();
             return Ok(abouts);
         }
 

@@ -1,11 +1,11 @@
-﻿namespace BakerWebUI.Dtos.About
+﻿namespace BakerWebUI.Dtos.Service
 {
-    public class CreateAboutDto
+    public class CreateServiceDto
     {
         public string Title { get; set; }
         public string Description { get; set; }
         public string ImageUrl { get; set; }
 
-        public int AboutDetailId { get; set; }
+        public int ServiceDetailId { get; set; }
     }
 }

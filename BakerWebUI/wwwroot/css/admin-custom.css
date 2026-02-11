@@ -1,0 +1,136 @@
+/* Custom Admin Theme Overrides - Vibrant & Chic */
+
+/* Gradient Sidebar - Blue to Purple */
+.sidebar {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+}
+
+.sidebar .nav .nav-item .nav-link {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Sidebar Hover - White Background with Black Text */
+.sidebar .nav .nav-item.active>.nav-link,
+.sidebar .nav .nav-item:hover>.nav-link,
+.sidebar .nav .nav-item .nav-link[aria-expanded="true"] {
+    background: #ffffff !important;
+    color: #333333 !important;
+    border-radius: 0 30px 30px 0;
+    /* Add stylish rounded right side */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar .nav .nav-item.active>.nav-link i.menu-icon,
+.sidebar .nav .nav-item:hover>.nav-link i.menu-icon,
+.sidebar .nav .nav-item .nav-link[aria-expanded="true"] i.menu-icon {
+    color: #333333 !important;
+}
+
+.sidebar .nav .nav-item.active>.nav-link .menu-title,
+.sidebar .nav .nav-item:hover>.nav-link .menu-title,
+.sidebar .nav .nav-item .nav-link[aria-expanded="true"] .menu-title {
+    color: #333333 !important;
+}
+
+.sidebar .nav .nav-item .nav-link .menu-title {
+    font-weight: 500;
+}
+
+.sidebar .nav .nav-item .collapse .sub-menu {
+    background: rgba(0, 0, 0, 0.1) !important;
+}
+
+.sidebar .nav .nav-item .collapse .sub-menu .nav-item .nav-link {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.sidebar .nav .nav-item .collapse .sub-menu .nav-item .nav-link:hover {
+    color: #fff !important;
+}
+
+/* Navbar Brand Area to match Sidebar */
+.navbar .navbar-brand-wrapper {
+    background: #667eea !important;
+    /* Matches gradient start */
+}
+
+.navbar .navbar-brand-wrapper .navbar-brand,
+.navbar .navbar-brand-wrapper .navbar-brand-mini {
+    color: #ffffff !important;
+}
+
+/* Card Styling for 'Shik' look */
+.card {
+    border: none !important;
+    border-radius: 12px !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05) !important;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+}
+
+.card .card-title {
+    color: #4a4a4a;
+    font-weight: 600;
+}
+
+/* Table Enhancements */
+.table thead th {
+    border-top: none !important;
+    border-bottom-width: 1px !important;
+    font-weight: 700 !important;
+    color: #764ba2 !important;
+    /* Use theme color for headers */
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.table td {
+    vertical-align: middle !important;
+    font-size: 0.95rem;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(102, 126, 234, 0.02) !important;
+    /* Very subtle tint */
+}
+
+/* Images in table */
+.table td img {
+    border-radius: 50% !important;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s;
+}
+
+.table td img:hover {
+    transform: scale(1.1);
+}
+
+/* Buttons */
+.btn {
+    border-radius: 8px !important;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-outline-primary {
+    border-color: #764ba2 !important;
+    color: #764ba2 !important;
+}
+
+.btn-outline-primary:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    border-color: transparent !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 10px rgba(118, 75, 162, 0.4);
+}
+
+/* Page Header */
+.page-header .page-title {
+    color: #4a4a4a;
+    font-weight: 600;
+}
