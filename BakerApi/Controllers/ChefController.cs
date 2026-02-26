@@ -22,6 +22,17 @@ namespace BakerApi.Controllers
             return Ok(chefs);
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetChefById(int id)
+        {
+            var value = _context.Chefs.Find(id);
+            if (value == null)
+            {
+                return NotFound();
+            }
+            return Ok(value);
+        }
+
         [HttpPost]
         public IActionResult Create(Chef chef)
         {

@@ -1,4 +1,4 @@
-﻿using BakerWebUI.Dtos.Products;
+using BakerWebUI.Dtos.Products;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -11,6 +11,7 @@ namespace BakerWebUI.Controllers
         {
             _httpClientFactory = httpClientFactory;
         }
+        
         public async Task<IActionResult> ProductList()
         {
             var client = _httpClientFactory.CreateClient();

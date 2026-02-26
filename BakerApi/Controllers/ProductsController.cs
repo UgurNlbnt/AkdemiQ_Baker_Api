@@ -36,7 +36,42 @@ namespace BakerApi.Controllers
         {
             var totalProduct = _context.Products.Count();
             return Ok(totalProduct);
+        }
 
+        [HttpGet("{id}")]
+        public IActionResult GetProductById(int id)
+        {
+            var value = _context.Products.Find(id);
+            if (value == null)
+            {
+                return NotFound();
+            }
+            return Ok(value);
+        }
+
+        [HttpPost]
+        public IActionResult Create(Product product)
+        {
+            _context.Products.Add(product);
+            _context.SaveChanges();
+            return Ok("Ürün ekleme işlemi başarılı bir şekilde gerçekleşti");
+        }
+
+        [HttpPut]
+        public IActionResult Update(Product product)
+        {
+            _context.Products.Update(product);
+            _context.SaveChanges();
+            return Ok("Ürün güncelleme işlemi başarılı bir şekilde gerçekleşti");
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            var value = _context.Products.Find(id);
+            _context.Products.Remove(value);
+            _context.SaveChanges();
+            return Ok("Ürün silme işlemi başarılı bir şekilde gerçekleşti");
         }
     }
 }
