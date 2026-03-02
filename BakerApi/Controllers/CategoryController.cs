@@ -1,6 +1,5 @@
 ﻿using BakerApi.Context;
 using BakerApi.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BakerApi.Controllers
@@ -10,11 +9,13 @@ namespace BakerApi.Controllers
     public class CategoryController : ControllerBase
     {
         private readonly BakerContext _context;
+
         public CategoryController(BakerContext context)
         {
             _context = context;
         }
 
+        // TÜM LİSTE
         [HttpGet]
         public IActionResult GetCategoryList()
         {
@@ -22,29 +23,46 @@ namespace BakerApi.Controllers
             return Ok(categories);
         }
 
+        // ID'YE GÖRE GETİR (EKLENDİ)
+        [HttpGet("{id}")]
+        public IActionResult GetCategory(int id)
+        {
+            var value = _context.Categories.Find(id);
+            if (value == null)
+                return NotFound();
+
+            return Ok(value);
+        }
+
+        // EKLE
         [HttpPost]
         public IActionResult Create(Category category)
         {
             _context.Categories.Add(category);
             _context.SaveChanges();
-            return Ok("Kategori ekleme işlemi başarılı bir şekilde gerçekleşti");
+            return Ok();
         }
 
+        // GÜNCELLE
         [HttpPut]
         public IActionResult Update(Category category)
         {
             _context.Categories.Update(category);
             _context.SaveChanges();
-            return Ok("Kategori güncelleme işlemi başarılı bir şekilde gerçekleşti");
+            return Ok();
         }
 
-        [HttpDelete]
+        // SİL (ROUTE DÜZELTİLDİ)
+        [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
             var value = _context.Categories.Find(id);
+            if (value == null)
+                return NotFound();
+
             _context.Categories.Remove(value);
             _context.SaveChanges();
-            return Ok("Kategori silme işlemi başarılı bir şekilde gerçekleşti");
+            return Ok();
         }
     }
 }
