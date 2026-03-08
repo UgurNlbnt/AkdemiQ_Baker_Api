@@ -1,54 +1,52 @@
 ﻿@using BakerWebUI.Dtos.Chefs
 @model UpdateChefDto
 @{
-    ViewData["Title"] = "UpdateChef";
+    ViewData["Title"] = "Şef Güncelle";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
 
 <div class="page-section">
-
     <!-- ÜST BAR -->
     <div class="flex-between mb-30">
-
         <!-- GERİ DÖN -->
-        <a href="/AdminChef/Index" class="btn btn-gradient-back">
-            <i class="fa-solid fa-arrow-left"></i> Geri Dön
+        <a href="/AdminChef/Index" class="btn-gradient-back">
+            Geri Dön
         </a>
     </div>
 
     <!-- FORM KART -->
     <div class="form-card">
+        <div class="form-header">
+            <h3 class="form-title">🧑‍🍳 Şefi Güncelle</h3>
+            <div class="form-title-underline"></div>
+        </div>
 
         <form method="post" action="/AdminChef/UpdateChef">
-
             <div class="form-group">
-                <label>Ad-Soyad</label>
-                <input asp-for="Name" class="form-input"  />
+                <label>Kişinin Adı Soyadı</label>
+                <input asp-for="Name" class="form-input" placeholder="Örn: Ahmet Usta" />
             </div>
 
             <div class="form-group">
-                <label>Ünvan</label>
-                <input asp-for="Title" class="form-input"  />
-            </div>
-            <div class="form-group">
-                <label>Resim Url</label>
-                <input asp-for="ImageUrl" class="form-input"  />
+                <label>Kişinin Görevi</label>
+                <input asp-for="Title" class="form-input" placeholder="Örn: Baş Fırıncı" />
             </div>
 
+            <div class="form-group">
+                <label>Kişinin Resim Yolu (URL)</label>
+                <input asp-for="ImageUrl" class="form-input" placeholder="https://..." />
+            </div>
 
             <div class="form-actions">
-                <button type="submit" class="btn-success">
-                    <i class="fa-solid fa-check"></i> Şef Bilgisi Güncelle
+                <button type="submit" class="btn-submit">
+                    Değişiklikleri Kaydet
                 </button>
             </div>
-
         </form>
-
     </div>
 </div>
 
 <style>
-
     /* ========== GENEL ARKA PLAN ========== */
     body {
         background-color: #f4f4f6;
@@ -62,164 +60,132 @@
 
     .flex-between {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
         margin-bottom: 35px;
     }
 
-    .page-title {
-        font-size: 28px;
-        font-weight: 700;
-        color: #6b4de6;
-    }
-
     /* ========== GERİ BUTONU ========== */
     .btn-gradient-back {
-        background: linear-gradient(135deg, #8f7cf3, #b4a6ff);
+        background: linear-gradient(135deg, #a894ff, #c2b6ff);
         color: #fff;
-        padding: 10px 18px;
-        border-radius: 14px;
-        font-weight: 600;
-        text-decoration: none;
-        transition: all 0.2s ease;
-        box-shadow: 0 4px 12px rgba(107, 77, 230, 0.20);
-    }
-
-        .btn-gradient-back:hover {
-            transform: translateY(-2px);
-        }
-
-        .btn-gradient-back:active {
-            background: linear-gradient(135deg, #6b4de6, #8f7cf3);
-            transform: scale(0.97);
-            box-shadow: 0 2px 6px rgba(107, 77, 230, 0.35);
-        }
-
-    /* ========== FORM KARTI ========== */
-    .form-card {
-        background: #ffffff;
-        border-radius: 18px;
-        padding: 35px;
-        max-width: 720px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    }
-
-    .form-group {
-        margin-bottom: 22px;
-    }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #555;
-            font-weight: 600;
-        }
-
-    /* ========== INPUTLAR ========== */
-    .form-input,
-    .form-textarea {
-        width: 100%;
-        padding: 12px 14px;
-        background: #f9f9fb;
-        border: 1px solid #ddd;
-        border-radius: 12px;
-        color: #333;
-        transition: all 0.2s ease;
-    }
-
-        .form-input:focus,
-        .form-textarea:focus {
-            border-color: #6b4de6;
-            box-shadow: 0 0 0 3px rgba(107, 77, 230, 0.1);
-            outline: none;
-        }
-
-    /* ========== FORM AKSİYON ALANI ========== */
-    .form-actions {
-        margin-top: 30px;
-        text-align: right;
-    }
-
-    /* ========== KAYDET BUTONU ========== */
-    .btn-success {
-        background: #86efac;
-        color: #14532d;
-        padding: 12px 24px;
-        border-radius: 14px;
-        font-weight: 600;
-        border: none;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        box-shadow: 0 4px 10px rgba(34, 197, 94, 0.20);
-    }
-
-        .btn-success:hover {
-            transform: translateY(-2px);
-        }
-
-        .btn-success:active {
-            background: #22c55e;
-            color: #ffffff;
-            transform: scale(0.96);
-            box-shadow: 0 2px 6px rgba(34, 197, 94, 0.35);
-        }
-
-    /* ========== TABLO AKSİYON BUTONLARI ========== */
-    .btn-action {
-        padding: 8px 18px;
+        padding: 10px 20px;
         border-radius: 12px;
         font-weight: 600;
         font-size: 14px;
-        border: 1.5px solid transparent;
-        background-color: #f3f4f6;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 4px 12px rgba(107, 77, 230, 0.15);
+        border: none;
+    }
+
+    .btn-gradient-back:hover {
+        transform: translateY(-2px);
+        color: #fff;
+        box-shadow: 0 6px 15px rgba(107, 77, 230, 0.25);
+    }
+
+    /* ========== FORM KARTI (Image 2 Style) ========== */
+    .form-card {
+        background: #ffffff;
+        border-radius: 20px;
+        padding: 40px;
+        max-width: 480px; 
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+        margin: 0 auto;
+    }
+
+    .form-header {
+        margin-bottom: 30px;
+    }
+
+    .form-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #2b2738;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .form-title-underline {
+        width: 50px;
+        height: 3px;
+        background: #6b4de6; 
+        margin-top: 10px;
+        border-radius: 2px;
+    }
+
+    .form-group {
+        margin-bottom: 24px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: #555;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    /* ========== INPUTLAR ========== */
+    .form-input {
+        width: 100%;
+        padding: 14px 16px;
+        background: #f8f9fc;
+        border: 1px solid transparent; 
+        border-radius: 12px;
+        color: #333;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+    .form-input::placeholder {
+        color: #b0b3ba;
+    }
+
+    .form-input:focus {
+        background: #ffffff;
+        border-color: #6b4de6;
+        box-shadow: 0 0 0 3px rgba(107, 77, 230, 0.1);
+        outline: none;
+    }
+
+    select.form-input {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23444' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 14px center;
+        background-size: 14px;
+    }
+
+    /* ========== KAYDET BUTONU ========== */
+    .form-actions {
+        margin-top: 35px;
+    }
+
+    .btn-submit {
+        width: 100%;
+        background: #3b2f44;
+        color: #fff;
+        padding: 16px;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 15px;
+        border: none;
         cursor: pointer;
-        transition: all 0.25s ease;
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+        transition: all 0.2s ease;
     }
 
-    /* SİL */
-    .btn-delete {
-        color: #ef4444;
-        border-color: #fca5a5;
-        background-color: #fef2f2;
+    .btn-submit:hover {
+        background: #2b2738;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(59, 47, 68, 0.2);
     }
-
-        .btn-delete:hover {
-            background-color: #ef4444;
-            color: #ffffff;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 14px rgba(239, 68, 68, 0.25);
-        }
-
-        .btn-delete:active {
-            transform: scale(0.95);
-        }
-
-    /* GÜNCELLE */
-    .btn-update {
-        color: #14b8a6;
-        border-color: #5eead4;
-        background-color: #ecfdf5;
-    }
-
-        .btn-update:hover {
-            background-color: #14b8a6;
-            color: #ffffff;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 14px rgba(20, 184, 166, 0.25);
-        }
-
-        .btn-update:active {
-            transform: scale(0.95);
-        }
-
-    /* ========== İKONLARI KALDIR ========== */
-    .btn-gradient-back i,
-    .btn-success i,
-    .btn-action i {
-        display: none !important;
-    }
-
 </style>
-
-
