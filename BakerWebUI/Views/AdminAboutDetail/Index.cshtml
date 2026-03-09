@@ -1,14 +1,23 @@
-﻿@using BakerWebUI.Dtos.Gallery
-@model List<ResultGalleryDto>
+@using BakerWebUI.Dtos.About
+@model List<AboutDetailDto>
 @{
-    ViewData["Title"] = "Fotoğraf Galerisi";
+    ViewData["Title"] = "Hakkımızda Detayları";
     Layout = "~/Views/AdminLayout/Index.cshtml";
+    int aboutId = ViewBag.AboutId;
 }
 
 <div class="page-section">
+    <!-- ÜST BAR -->
+    <div class="flex-between mb-30">
+        <!-- GERİ DÖN -->
+        <a href="/AdminAbout/Index" class="btn-gradient-back">
+            Hakkımızda Bölümüne Dön
+        </a>
+    </div>
+
     <div class="list-header">
-        <h3 class="list-title">Galeri Listesi</h3>
-        <p class="list-desc">Sitenizdeki tüm galeri fotoğraflarını buradan yönetebilirsiniz.</p>
+        <h3 class="list-title">Hakkımızda Detay Listesi</h3>
+        <p class="list-desc">Seçili Hakkımızda bloğunuza ait alt maddeleri ve ikon özelliklerini buradan yönetebilirsiniz.</p>
         <hr class="list-divider" />
     </div>
 
@@ -16,10 +25,10 @@
         <table class="custom-table">
             <thead>
                 <tr>
-                    <th style="width: 10%">#</th>
-                    <th style="width: 20%">GÖRSEL</th>
-                    <th style="width: 40%">BAĞLANTI / URL</th>
-                    <th style="width: 30%" class="text-right">İŞLEMLER</th>
+                    <th style="width: 5%">#</th>
+                    <th style="width: 25%">İKON ADI</th>
+                    <th style="width: 35%">AÇIKLAMA</th>
+                    <th style="width: 35%" class="text-right">İŞLEMLER</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,14 +37,12 @@
                     foreach (var item in Model)
                     {
                         <tr>
-                            <td class="col-id">@item.GalleryId</td>
-                            <td class="col-name">
-                                <img src="@item.ImageUrl" style="width: 80px; height: 60px; object-fit: cover; border-radius: 8px;" />
-                            </td>
-                            <td class="col-name" style="word-break: break-all;">@item.ImageUrl</td>
+                            <td class="col-id">@item.AboutDetailId</td>
+                            <td class="col-name">@item.IconUrl</td>
+                            <td>@(item.Description.Length > 40 ? item.Description.Substring(0, 40) + "..." : item.Description)</td>
                             <td class="text-right">
-                                <a href="/AdminGallery/UpdateGallery/@item.GalleryId" class="btn-action btn-update">Düzenle</a>
-                                <a href="/AdminGallery/DeleteGallery/@item.GalleryId" class="btn-action btn-delete">Sil</a>
+                                <a href="/AdminAboutDetail/UpdateAboutDetail?id=@item.AboutDetailId&aboutId=@aboutId" class="btn-action btn-update">Düzenle</a>
+                                <a href="/AdminAboutDetail/DeleteAboutDetail?id=@item.AboutDetailId&aboutId=@aboutId" class="btn-action btn-delete">Sil</a>
                             </td>
                         </tr>
                     }
@@ -45,19 +52,55 @@
     </div>
 
     <div class="mt-4">
-        <a href="/AdminGallery/CreateGallery/" class="btn-gradient-primary">
-            + Yeni Görsel Ekle
+        <a href="/AdminAboutDetail/CreateAboutDetail?aboutId=@aboutId" class="btn-gradient-primary">
+            + Yeni Detay Ekle
         </a>
     </div>
 </div>
 
 <style>
+    /* ========== GENEL ARKA PLAN ========== */
+    body {
+        background-color: #f4f4f6;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
     /* ========== SAYFA YAPISI ========== */
     .page-section {
         background: #ffffff;
         border-radius: 18px;
         padding: 35px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+    
+    .flex-between {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 25px;
+    }
+
+    /* ========== GERİ BUTONU ========== */
+    .btn-gradient-back {
+        background: linear-gradient(135deg, #a894ff, #c2b6ff);
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 14px;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 4px 12px rgba(107, 77, 230, 0.15);
+        border: none;
+    }
+
+    .btn-gradient-back:hover {
+        transform: translateY(-2px);
+        color: #fff;
+        box-shadow: 0 6px 15px rgba(107, 77, 230, 0.25);
     }
 
     .list-header {

@@ -1,0 +1,189 @@
+@using BakerWebUI.Dtos.About
+@model CreateAboutDto
+@{
+    ViewData["Title"] = "Yeni Hakkımızda Ekle";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-section">
+    <!-- ÜST BAR -->
+    <div class="flex-between mb-30">
+        <!-- GERİ DÖN -->
+        <a href="/AdminAbout/Index" class="btn-gradient-back">
+            Geri Dön
+        </a>
+    </div>
+
+    <!-- FORM KART -->
+    <div class="form-card">
+        <div class="form-header">
+            <h3 class="form-title">📋 Yeni Hakkımızda Kaydı</h3>
+            <div class="form-title-underline"></div>
+        </div>
+
+        <form method="post" action="/AdminAbout/CreateAbout">
+
+            <div class="form-group">
+                <label>Başlık</label>
+                <input asp-for="Title" class="form-input" placeholder="Örn: Yetenekli Fırıncılarımız" />
+            </div>
+
+            <div class="form-group">
+                <label>Görsel Linki (URL)</label>
+                <input asp-for="ImageUrl" class="form-input" placeholder="Örn: https://example.com/image.jpg" />
+            </div>
+
+            <div class="form-group">
+                <label>Açıklama / İçerik</label>
+                <textarea asp-for="Description" class="form-input" rows="5" placeholder="Hakkımızda bölümü hakkında açıklama giriniz..."></textarea>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-submit">
+                    Hakkımızda Ekle (Kaydet)
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+<style>
+    /* ========== GENEL ARKA PLAN ========== */
+    body {
+        background-color: #f4f4f6;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* ========== SAYFA YAPISI ========== */
+    .page-section {
+        padding: 40px;
+    }
+
+    .flex-between {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 35px;
+    }
+
+    /* ========== GERİ BUTONU ========== */
+    .btn-gradient-back {
+        background: linear-gradient(135deg, #a894ff, #c2b6ff);
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 14px;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 4px 12px rgba(107, 77, 230, 0.15);
+        border: none;
+    }
+
+    .btn-gradient-back:hover {
+        transform: translateY(-2px);
+        color: #fff;
+        box-shadow: 0 6px 15px rgba(107, 77, 230, 0.25);
+    }
+
+    /* ========== FORM KARTI ========== */
+    .form-card {
+        background: #ffffff;
+        border-radius: 20px;
+        padding: 40px;
+        max-width: 600px; 
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+        margin: 0 auto;
+    }
+
+    .form-header {
+        margin-bottom: 30px;
+    }
+
+    .form-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #2b2738;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .form-title-underline {
+        width: 50px;
+        height: 3px;
+        background: #6b4de6; 
+        margin-top: 10px;
+        border-radius: 2px;
+    }
+
+    .form-group {
+        margin-bottom: 24px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: #555;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    /* ========== INPUTLAR ========== */
+    .form-input {
+        width: 100%;
+        padding: 14px 16px;
+        background: #f8f9fc;
+        border: 1px solid transparent; 
+        border-radius: 12px;
+        color: #333;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+    .form-input::placeholder {
+        color: #b0b3ba;
+    }
+
+    .form-input:focus {
+        background: #ffffff;
+        border-color: #6b4de6;
+        box-shadow: 0 0 0 3px rgba(107, 77, 230, 0.1);
+        outline: none;
+    }
+
+    textarea.form-input {
+        resize: vertical;
+        min-height: 100px;
+    }
+
+    /* ========== KAYDET BUTONU ========== */
+    .form-actions {
+        margin-top: 35px;
+    }
+
+    .btn-submit {
+        width: 100%;
+        background: #3b2f44;
+        color: #fff;
+        padding: 16px;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 15px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .btn-submit:hover {
+        background: #2b2738;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(59, 47, 68, 0.2);
+    }
+</style>

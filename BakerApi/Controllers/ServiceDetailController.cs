@@ -16,6 +16,19 @@ namespace BakerApi.Controllers
         {
             _context = context;
         }
+        [HttpGet("{id}")]
+        public IActionResult GetServiceDetail(int id)
+        {
+            var value = _context.ServiceDetails.Find(id);
+            return Ok(value);
+        }
+
+        [HttpGet("byServiceId/{serviceId}")]
+        public IActionResult GetByServiceId(int serviceId)
+        {
+            var details = _context.ServiceDetails.Where(x => x.ServiceId == serviceId).ToList();
+            return Ok(details);
+        }
 
         [HttpGet]
         public IActionResult GetServiceDetailsWithService()

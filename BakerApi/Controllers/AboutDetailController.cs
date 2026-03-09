@@ -17,6 +17,20 @@ namespace BakerApi.Controllers
             _context = context;
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetAboutDetail(int id)
+        {
+            var aboutDetail = _context.AboutDetails.Find(id);
+            return Ok(aboutDetail);
+        }
+
+        [HttpGet("byAboutId/{aboutId}")]
+        public IActionResult GetByAboutId(int aboutId)
+        {
+            var details = _context.AboutDetails.Where(x => x.AboutId == aboutId).ToList();
+            return Ok(details);
+        }
+
         [HttpGet]
         public IActionResult GetAboutDetails()
         {

@@ -23,6 +23,13 @@ namespace BakerApi.Controllers
             return Ok(galleries);
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetGallery(int id)
+        {
+            var value = _context.Galleries.Find(id);
+            return Ok(value);
+        }
+
         [HttpPost]
         public IActionResult Create(Gallery gallery)
         {

@@ -23,6 +23,20 @@ namespace BakerApi.Controllers
             return Ok(addressInfo);
         }
 
+        [HttpGet("GetAll")]
+        public IActionResult GetAllAddressInfo()
+        {
+            var addresses = _context.AdressInfos.ToList();
+            return Ok(addresses);
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetAddressInfoById(int id)
+        {
+            var addressInfo = _context.AdressInfos.Find(id);
+            return Ok(addressInfo);
+        }
+
         [HttpPost]
         public IActionResult Create(AdressInfo addressInfo)
         {

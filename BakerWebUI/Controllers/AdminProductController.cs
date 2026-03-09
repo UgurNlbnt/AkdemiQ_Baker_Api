@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using BakerWebUI.Dtos.Products;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BakerWebUI.Controllers
 {
@@ -36,8 +37,8 @@ namespace BakerWebUI.Controllers
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<BakerWebUI.Dtos.Categories.ResultCategoryDto>>(jsonData);
                 
-                List<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> categoryValues = (from x in values
-                                                                                            select new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem
+                List<SelectListItem> categoryValues = (from x in values
+                                                                                            select new SelectListItem
                                                                                             {
                                                                                                 Text = x.CategoryName,
                                                                                                 Value = x.CategoryId.ToString()
@@ -81,8 +82,8 @@ namespace BakerWebUI.Controllers
             {
                 var jsonData1 = await responseMessage1.Content.ReadAsStringAsync();
                 var values1 = JsonConvert.DeserializeObject<List<BakerWebUI.Dtos.Categories.ResultCategoryDto>>(jsonData1);
-                List<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> categoryValues = (from x in values1
-                                                                                            select new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem
+                List<SelectListItem> categoryValues = (from x in values1
+                                                                                            select new SelectListItem
                                                                                             {
                                                                                                 Text = x.CategoryName,
                                                                                                 Value = x.CategoryId.ToString()

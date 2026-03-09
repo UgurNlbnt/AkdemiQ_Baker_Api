@@ -1,13 +1,13 @@
-﻿using BakerWebUI.Dtos.Service;
+using BakerWebUI.Dtos.About;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BakerWebUI.Controllers
 {
-    public class AdminServiceController : Controller
+    public class AdminAboutController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public AdminServiceController(IHttpClientFactory httpClientFactory)
+        public AdminAboutController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
@@ -15,32 +15,32 @@ namespace BakerWebUI.Controllers
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync("https://localhost:7109/api/Service");
+            var response = await client.GetAsync("https://localhost:7109/api/About");
 
             if (response.IsSuccessStatusCode)
             {
                 var jsonData = await response.Content.ReadAsStringAsync();
                 var values = Newtonsoft.Json.JsonConvert
-                    .DeserializeObject<List<ResultServiceDto>>(jsonData);
+                    .DeserializeObject<List<ResultAboutDto>>(jsonData);
 
                 return View(values);
             }
 
-            return View();
+            return View(new List<ResultAboutDto>());
         }
 
         [HttpGet]
-        public IActionResult CreateService()
+        public IActionResult CreateAbout()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateService(CreateServiceDto dto)
+        public async Task<IActionResult> CreateAbout(CreateAboutDto dto)
         {
             var client = _httpClientFactory.CreateClient();
             var response = await client.PostAsJsonAsync(
-                "https://localhost:7109/api/Service", dto);
+                "https://localhost:7109/api/About", dto);
 
             if (response.IsSuccessStatusCode)
                 return RedirectToAction("Index");
@@ -49,17 +49,17 @@ namespace BakerWebUI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> UpdateService(int id)
+        public async Task<IActionResult> UpdateAbout(int id)
         {
             var client = _httpClientFactory.CreateClient();
             var response = await client.GetAsync(
-                $"https://localhost:7109/api/Service/{id}");
+                $"https://localhost:7109/api/About/{id}");
 
             if (response.IsSuccessStatusCode)
             {
                 var jsonData = await response.Content.ReadAsStringAsync();
                 var value = Newtonsoft.Json.JsonConvert
-                    .DeserializeObject<UpdateServiceDto>(jsonData);
+                    .DeserializeObject<UpdateAboutDto>(jsonData);
 
                 return View(value);
             }
@@ -68,11 +68,11 @@ namespace BakerWebUI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateService(UpdateServiceDto dto)
+        public async Task<IActionResult> UpdateAbout(UpdateAboutDto dto)
         {
             var client = _httpClientFactory.CreateClient();
             var response = await client.PutAsJsonAsync(
-                "https://localhost:7109/api/Service", dto);
+                "https://localhost:7109/api/About", dto);
 
             if (response.IsSuccessStatusCode)
                 return RedirectToAction("Index");
@@ -80,11 +80,11 @@ namespace BakerWebUI.Controllers
             return View(dto);
         }
 
-        public async Task<IActionResult> DeleteService(int id)
+        public async Task<IActionResult> DeleteAbout(int id)
         {
             var client = _httpClientFactory.CreateClient();
             await client.DeleteAsync(
-                $"https://localhost:7109/api/Service/{id}");
+                $"https://localhost:7109/api/About?id={id}");
 
             return RedirectToAction("Index");
         }

@@ -1,4 +1,5 @@
 ﻿using BakerWebUI.Dtos.AdressInfoDto;
+using BakerWebUI.Dtos.Gallery;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BakerWebUI.ViewComponents
@@ -11,25 +12,32 @@ namespace BakerWebUI.ViewComponents
         {
             _httpClientFactory = httpClientFactory;
         }
+
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7109/api/AddressInfo");
+            
+            // 1. Fetch Address Info
+            var addressResponse = await client.GetAsync("https://localhost:7109/api/AddressInfo");
+            ResultAdressInfoDto addressInfo = null;
 
-            if (responseMessage.IsSuccessStatusCode)
+            if (addressResponse.IsSuccessStatusCode)
             {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-
-                // Bu seçenek verilerin eşleşmesi için kritik!
-                var options = new System.Text.Json.JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                };
-
-                var addressInfo = System.Text.Json.JsonSerializer.Deserialize<ResultAdressInfoDto>(jsonData, options);
-                return View(addressInfo);
+                var addressJson = await addressResponse.Content.ReadAsStringAsync();
+                var options = new System.Text.Json.JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                addressInfo = System.Text.Json.JsonSerializer.Deserialize<ResultAdressInfoDto>(addressJson, options);
             }
-            return View();
+
+            // 2. Fetch Gallery Images
+            var galleryResponse = await client.GetAsync("https://localhost:7109/api/Gallery");
+            if (galleryResponse.IsSuccessStatusCode)
+            {
+                var galleryJson = await galleryResponse.Content.ReadAsStringAsync();
+                var galleries = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ResultGalleryDto>>(galleryJson);
+                ViewBag.Galleries = galleries;
+            }
+
+            return View(addressInfo);
         }
     }
 }

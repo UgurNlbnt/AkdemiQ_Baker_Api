@@ -1,14 +1,14 @@
-﻿@using BakerWebUI.Dtos.Gallery
-@model List<ResultGalleryDto>
+@using BakerWebUI.Dtos.About
+@model List<ResultAboutDto>
 @{
-    ViewData["Title"] = "Fotoğraf Galerisi";
+    ViewData["Title"] = "Hakkımızda Yönetimi";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
 
 <div class="page-section">
     <div class="list-header">
-        <h3 class="list-title">Galeri Listesi</h3>
-        <p class="list-desc">Sitenizdeki tüm galeri fotoğraflarını buradan yönetebilirsiniz.</p>
+        <h3 class="list-title">Hakkımızda (Hakkımızda Blokları)</h3>
+        <p class="list-desc">Sitenizdeki Hakkımızda kısmını buradan yönetebilir, alt detaylarını ekleyebilirsiniz.</p>
         <hr class="list-divider" />
     </div>
 
@@ -16,10 +16,10 @@
         <table class="custom-table">
             <thead>
                 <tr>
-                    <th style="width: 10%">#</th>
-                    <th style="width: 20%">GÖRSEL</th>
-                    <th style="width: 40%">BAĞLANTI / URL</th>
-                    <th style="width: 30%" class="text-right">İŞLEMLER</th>
+                    <th style="width: 5%">#</th>
+                    <th style="width: 25%">BAŞLIK</th>
+                    <th style="width: 35%">AÇIKLAMA</th>
+                    <th style="width: 35%" class="text-right">İŞLEMLER</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,14 +28,13 @@
                     foreach (var item in Model)
                     {
                         <tr>
-                            <td class="col-id">@item.GalleryId</td>
-                            <td class="col-name">
-                                <img src="@item.ImageUrl" style="width: 80px; height: 60px; object-fit: cover; border-radius: 8px;" />
-                            </td>
-                            <td class="col-name" style="word-break: break-all;">@item.ImageUrl</td>
+                            <td class="col-id">@item.AboutId</td>
+                            <td class="col-name">@item.Title</td>
+                            <td>@(item.Description.Length > 40 ? item.Description.Substring(0, 40) + "..." : item.Description)</td>
                             <td class="text-right">
-                                <a href="/AdminGallery/UpdateGallery/@item.GalleryId" class="btn-action btn-update">Düzenle</a>
-                                <a href="/AdminGallery/DeleteGallery/@item.GalleryId" class="btn-action btn-delete">Sil</a>
+                                <a href="/AdminAboutDetail/Index?aboutId=@item.AboutId" class="btn-action btn-detail">Detayları Yönet</a>
+                                <a href="/AdminAbout/UpdateAbout/@item.AboutId" class="btn-action btn-update">Düzenle</a>
+                                <a href="/AdminAbout/DeleteAbout/@item.AboutId" class="btn-action btn-delete">Sil</a>
                             </td>
                         </tr>
                     }
@@ -45,8 +44,8 @@
     </div>
 
     <div class="mt-4">
-        <a href="/AdminGallery/CreateGallery/" class="btn-gradient-primary">
-            + Yeni Görsel Ekle
+        <a href="/AdminAbout/CreateAbout/" class="btn-gradient-primary">
+            + Yeni Hakkımızda Ekle
         </a>
     </div>
 </div>
@@ -196,6 +195,19 @@
         color: #ffffff;
         transform: translateY(-2px);
         box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2);
+    }
+    
+    /* DETAYLARI YÖNET */
+    .btn-detail {
+        color: #3b82f6;
+        border-color: #93c5fd;
+        background-color: #eff6ff;
+    }
+    .btn-detail:hover {
+        background-color: #3b82f6;
+        color: #ffffff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(59, 130, 246, 0.2);
     }
 
     /* PRIMARY BUTON */
