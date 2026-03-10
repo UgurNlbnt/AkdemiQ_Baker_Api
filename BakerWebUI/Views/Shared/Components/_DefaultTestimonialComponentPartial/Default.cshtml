@@ -32,11 +32,65 @@
                 </div>
                 <div class="col-md-6 text-md-end">
                     <div class="position-relative">
-                        <input class="form-control bg-transparent border-light w-100 py-3 ps-4 pe-5" type="text" placeholder="Emaliniz">
-                        <button type="button" class="btn btn-dark py-2 px-3 position-absolute top-0 end-0 mt-2 me-2">Kaydol</button>
+                        <input id="txtEmail" class="form-control bg-transparent border-light w-100 py-3 ps-4 pe-5" type="text" placeholder="Emaliniz" autocomplete="off">
+                        <button id="btnSubscribe" type="button" class="btn btn-dark py-2 px-3 position-absolute top-0 end-0 mt-2 me-2">Kaydol</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var btn = document.getElementById("btnSubscribe");
+        if (btn) {
+            btn.addEventListener("click", function () {
+                var emailInput = document.getElementById("txtEmail").value;
+
+                if (!emailInput || emailInput.trim() === "") {
+                    Swal.fire({
+                        icon: "warning",
+                        title: "Eksik Bilgi",
+                        text: "Lütfen bir e-posta adresi giriniz."
+                    });
+                    return;
+                }
+
+                var subscribeData = {
+                    Email: emailInput.trim()
+                };
+
+                $.ajax({
+                    url: "/Default/Subscribe",
+                    type: "POST",
+                    data: subscribeData,
+                    success: function (response) {
+                        if (response.success) {
+                            Swal.fire({
+                                icon: "success",
+                                title: "Başarılı",
+                                text: response.message
+                            });
+                            document.getElementById("txtEmail").value = "";
+                        } else {
+                            Swal.fire({
+                                icon: "error",
+                                title: "Hata",
+                                text: response.message
+                            });
+                        }
+                    },
+                    error: function () {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Hata",
+                            text: "Sistemsel bir sorun oluştu, lütfen daha sonra tekrar deneyiniz."
+                        });
+                    }
+                });
+            });
+        }
+    });
+</script>
