@@ -1,8 +1,194 @@
-﻿
+@using BakerWebUI.Dtos.ContactDtos
+@model List<ResultContactDto>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Mesaj Yönetimi";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
 
-<h1>mesaj yönetim sayfası</h1>
+<div class="page-section">
+    <div class="list-header">
+        <h3 class="list-title">Gelen Mesajlar</h3>
+        <p class="list-desc">Ziyaretçileriniz tarafından gönderilen mesajları buradan inceleyebilirsiniz.</p>
+        <hr class="list-divider" />
+    </div>
 
+    <div class="table-container">
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th style="width: 5%">#</th>
+                    <th style="width: 15%">AD SOYAD</th>
+                    <th style="width: 15%">E-POSTA</th>
+                    <th style="width: 15%">KONU</th>
+                    <th style="width: 40%">MESAJ</th>
+                    <th style="width: 10%" class="text-right">İŞLEMLER</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Count > 0)
+                {
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="col-id">@item.ContactId</td>
+                            <td class="col-name">@item.Name</td>
+                            <td>@item.Email</td>
+                            <td>@item.Subject</td>
+                            <td>@item.Message</td>
+                            <td class="text-right">
+                                <a href="/AdminMessage/DeleteContact/@item.ContactId" class="btn-action btn-delete">Sil</a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="6" class="text-center">Hiç mesaj bulunamadı.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    /* ========== SAYFA YAPISI ========== */
+    .page-section {
+        background: #ffffff;
+        border-radius: 18px;
+        padding: 35px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .list-header {
+        margin-bottom: 25px;
+    }
+
+    .list-title {
+        font-size: 24px;
+        font-weight: 700;
+        color: #2b2738;
+        margin-bottom: 8px;
+    }
+
+    .list-desc {
+        color: #888;
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    .list-divider {
+        border: none;
+        height: 2px;
+        background: linear-gradient(90deg, #6b4de6, transparent);
+        margin: 0;
+    }
+
+    /* ========== TABLO ========== */
+    .table-container {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .custom-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 12px;
+    }
+
+    .custom-table th {
+        background-color: #3b2f44;
+        color: #fff;
+        font-size: 11px;
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: 1px;
+        padding: 16px 20px;
+        border: none;
+    }
+
+    .custom-table th:first-child {
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+
+    .custom-table th:last-child {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    .custom-table tbody tr {
+        background-color: #fff;
+        transition: transform 0.2s ease;
+    }
+
+    .custom-table tbody tr:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(107, 77, 230, 0.08);
+    }
+
+    .custom-table td {
+        padding: 14px 20px;
+        vertical-align: middle;
+        font-size: 14px;
+        color: #444;
+        border-top: 2px solid #d1d5db;
+        border-bottom: 2px solid #d1d5db;
+    }
+
+    .custom-table td:first-child {
+        border-left: 2px solid #d1d5db;
+        border-top-left-radius: 12px;
+        border-bottom-left-radius: 12px;
+        font-weight: 600;
+        color: #888;
+    }
+
+    .custom-table td:last-child {
+        border-right: 2px solid #d1d5db;
+        border-top-right-radius: 12px;
+        border-bottom-right-radius: 12px;
+    }
+
+    .col-name {
+        font-weight: 600;
+        color: #2b2738;
+    }
+
+    .text-right {
+        text-align: right;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    /* ========== BUTONLAR ========== */
+    .btn-action {
+        padding: 8px 18px;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 13px;
+        border: 1.5px solid transparent;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-decoration: none;
+        display: inline-block;
+        margin-left: 6px;
+    }
+
+    /* SİL */
+    .btn-delete {
+        color: #ef4444;
+        border-color: #fca5a5;
+        background-color: #fef2f2;
+    }
+
+    .btn-delete:hover {
+        background-color: #ef4444;
+        color: #ffffff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(239, 68, 68, 0.2);
+    }
+</style>

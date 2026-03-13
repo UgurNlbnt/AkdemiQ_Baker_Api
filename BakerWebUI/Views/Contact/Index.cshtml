@@ -1,4 +1,4 @@
-﻿@{
+@{
     Layout = null;
 }
 
@@ -33,44 +33,106 @@
                     <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.1s">
                         
 
-                        <form>
+                        <form id="contactForm">
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="name" placeholder="Adınız">
-                                        <label for="name">Adınız</label>
+                                        <input type="text" class="form-control" id="txtName" placeholder="Adınız">
+                                        <label for="txtName">Adınız</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="email" class="form-control" id="email" placeholder="E-posta Adresiniz">
-                                        <label for="email">E-posta Adresiniz</label>
+                                        <input type="email" class="form-control" id="txtEmail" placeholder="E-posta Adresiniz">
+                                        <label for="txtEmail">E-posta Adresiniz</label>
                                     </div>
                                 </div>
 
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="subject" placeholder="Konu">
-                                        <label for="subject">Konu</label>
+                                        <input type="text" class="form-control" id="txtSubject" placeholder="Konu">
+                                        <label for="txtSubject">Konu</label>
                                     </div>
                                 </div>
 
                                 <div class="col-12">
                                     <div class="form-floating">
                                         <textarea class="form-control" placeholder="Mesajınızı buraya bırakın"
-                                                  id="message" style="height: 200px"></textarea>
-                                        <label for="message">Mesaj</label>
+                                                  id="txtMessage" style="height: 200px"></textarea>
+                                        <label for="txtMessage">Mesaj</label>
                                     </div>
                                 </div>
 
                                 <div class="col-12 text-center">
-                                    <button class="btn btn-primary rounded-pill py-3 px-5" type="submit">
+                                    <button id="btnSendMessage" class="btn btn-primary rounded-pill py-3 px-5" type="button">
                                         Mesajı Gönder
                                     </button>
                                 </div>
                             </div>
                         </form>
+
+                        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+                        <script>
+                            $(document).ready(function () {
+                                $("#btnSendMessage").click(function () {
+                                    var name = $("#txtName").val();
+                                    var email = $("#txtEmail").val();
+                                    var subject = $("#txtSubject").val();
+                                    var message = $("#txtMessage").val();
+
+                                    if (!name || !email || !subject || !message) {
+                                        Swal.fire({
+                                            icon: 'warning',
+                                            title: 'Uyarı',
+                                            text: 'Lütfen tüm alanları doldurunuz.'
+                                        });
+                                        return;
+                                    }
+
+                                    var contactData = {
+                                        Name: name,
+                                        Email: email,
+                                        Subject: subject,
+                                        Message: message
+                                    };
+
+                                    $.ajax({
+                                        url: "/Contact/Index",
+                                        type: "POST",
+                                        data: contactData,
+                                        success: function (response) {
+                                            if (response.success) {
+                                                Swal.fire({
+                                                    icon: 'success',
+                                                    title: 'Başarılı',
+                                                    text: response.message
+                                                });
+                                                $("#txtName").val('');
+                                                $("#txtEmail").val('');
+                                                $("#txtSubject").val('');
+                                                $("#txtMessage").val('');
+                                            } else {
+                                                Swal.fire({
+                                                    icon: 'error',
+                                                    title: 'Hata',
+                                                    text: response.message
+                                                });
+                                            }
+                                        },
+                                        error: function () {
+                                            Swal.fire({
+                                                icon: 'error',
+                                                title: 'Hata',
+                                                text: 'Bir hata oluştu.'
+                                            });
+                                        }
+                                    });
+                                });
+                            });
+                        </script>
+
 
                     </div>
                 </div>

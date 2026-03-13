@@ -1,4 +1,4 @@
-﻿
+
 @{
     Layout = null;
 }
@@ -17,7 +17,9 @@
             @await Component.InvokeAsync("_AdminLayoutSidebarComponentPartial")
             <!-- partial -->
             <div class="main-panel">
-                @RenderBody()
+                <div class="content-wrapper">
+                    @RenderBody()
+                </div>
                 <!-- content-wrapper ends -->
                 <!-- partial:partials/_footer.html -->
                 @await Component.InvokeAsync("_AdminLayoutFooterComponentPartial")
