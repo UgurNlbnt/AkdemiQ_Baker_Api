@@ -71,61 +71,60 @@ Başlıca controllerlar:
 
 ### 1. Ana Sayfa Hero Alanı
 
-![Ana Sayfa Hero](docs/screenshots/1.png)
+![Uploading 1.png…]()
 
 Ziyaretçinin siteye ilk girdiğinde gördüğü karşılama alanıdır. Üst menü, sosyal medya bağlantıları, telefon bilgisi ve marka başlığı burada yer alır. Hero görseli fırın temasını güçlendirir ve kullanıcıyı ana içeriklere yönlendirir.
 
 ### 2. İstatistik Alanı
 
-![İstatistik Alanı](docs/screenshots/2.png)
+![Uploading 2.png…]()
 
 Bu bölüm API'den gelen dinamik sayıları gösterir. Ürün sayısı, şef sayısı, kategori sayısı ve referans sayısı ViewBag üzerinden çekilir. Böylece admin panelinde yapılan değişiklikler ana sayfadaki istatistiklere yansır.
 
 ### 3. Hakkımızda Bölümü
 
-![Hakkımızda Bölümü](docs/screenshots/3.png)
+![Uploading 3.png…]()
 
 Pastanenin/fırının hikayesini anlatan alandır. Başlık, açıklama, görsel ve hizmet vurguları API'deki `About` ve `AboutDetail` kayıtlarıyla yönetilir.
 
 ### 4. Ürünler Bölümü
 
-![Ürünler Bölümü](docs/screenshots/4.png)
+![Uploading 4.png…]()
 
 Ürünler kart yapısıyla listelenir. Her kartta ürün adı, fiyatı, kategori adı ve ürün görseli bulunur. Ürünler API'deki `Products/with_category` endpointinden kategori bilgisiyle birlikte gelir.
 
 ### 5. Servisler Bölümü
 
-![Servisler Bölümü](docs/screenshots/5.png)
+![Uploading 5.png…]()
 
 Fırının sunduğu hizmetleri açıklar. Kaliteli ürünler, kişiye özel üretim, online sipariş ve adrese teslimat gibi hizmet detayları `Service` ve `ServiceDetail` kayıtlarıyla yönetilir.
 
 ### 6. Ekip Bölümü
 
-![Ekip Bölümü](docs/screenshots/6.png)
+![Uploading 6.png…]()
 
 Şef ve çalışan bilgilerini gösterir. Her kartta kişinin adı, görevi ve fotoğrafı bulunur. Bu alan `Chef` kayıtlarından beslenir.
 
 ### 7. Referanslar ve Bülten Aboneliği
 
-![Referanslar ve Bülten](docs/screenshots/7.png)
+![Uploading 7.png…]()
 
 Müşteri yorumları ve bülten aboneliği formu burada bulunur. Referanslar `Testimonial` tablosundan gelir. Abonelik formuna girilen e-posta adresleri `Subscribe` endpointine gönderilir.
 
 ### 8. Footer ve Galeri
 
-![Footer ve Galeri](docs/screenshots/8.png)
+![Uploading 8.png…]()
 
 Footer alanında adres, telefon, e-posta, hızlı bağlantılar, sosyal medya ikonları ve fotoğraf galerisi yer alır. Galeri görselleri `Gallery` kayıtlarından gelir.
 
 ### 9. İletişim Formu
 
-![İletişim Formu](docs/screenshots/9.png)
+![Uploading 9.png…]()
 
 Ziyaretçiler ad, e-posta, konu ve mesaj bilgileriyle iletişim formu gönderebilir. Form gönderildiğinde veriler `Contact` endpointine kaydedilir.
 
 ### 10. Başarılı Mesaj Bildirimi
-
-![Başarılı Mesaj Bildirimi](docs/screenshots/10.png)
+![Uploading 10.png…]()
 
 İletişim formu başarıyla gönderildiğinde kullanıcıya SweetAlert tarzında başarılı mesaj bildirimi gösterilir.
 
