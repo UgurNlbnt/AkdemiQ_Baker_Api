@@ -1,171 +1,130 @@
-# Baker - Bakery Web Site & Admin Panel
+# 🍞 Baker - Bakery Web Site & Admin Panel
 
 Baker, pastane/fırın işletmeleri için geliştirilmiş ASP.NET Core tabanlı bir web uygulamasıdır. Proje iki ana bölümden oluşur:
 
-- `BakerApi`: Ürün, kategori, şef, servis, galeri, mesaj, abone ve site içeriklerini yöneten REST API.
-- `BakerWebUI`: API'den veri tüketen MVC/Razor tabanlı vitrin sitesi ve admin paneli.
+- 🔌 `BakerApi`: Ürün, kategori, şef, servis, galeri, mesaj, abone ve site içeriklerini yöneten REST API.
+- 🖥️ `BakerWebUI`: API'den veri tüketen MVC/Razor tabanlı vitrin sitesi ve admin paneli.
 
 Uygulamanın vitrin tarafında ziyaretçiler ürünleri, hizmetleri, ekip üyelerini, referansları ve iletişim formunu görüntüleyebilir. Admin panelinde ise site içerikleri yönetilebilir; ürün, kategori, servis, şef, galeri, mesaj ve abone kayıtları üzerinde listeleme, ekleme, güncelleme ve silme işlemleri yapılabilir.
 
-## Kullanılan Teknolojiler
+## 🛠️ Kullanılan Teknolojiler
 
-- ASP.NET Core MVC / Web API
-- Entity Framework Core
-- SQL Server
-- Razor View Components
-- Swagger / Swashbuckle
-- Bootstrap tabanlı Baker teması
-- Purple Admin yönetim paneli teması
+- 🧠 ASP.NET Core MVC / Web API
+- 🗃️ Entity Framework Core
+- 💾 SQL Server
+- 🧩 Razor View Components
+- 📘 Swagger / Swashbuckle
+- 🎨 Bootstrap tabanlı Baker teması
+- 🟣 Purple Admin yönetim paneli teması
 
 
-## Temel Özellikler
+## 🚀 Temel Özellikler
 
-- Ana sayfada dinamik ürün, kategori, şef ve referans sayıları
-- Ürünlerin kategori ve fiyat bilgileriyle listelenmesi
-- Hakkımızda, servisler, ekip, referanslar ve galeri bölümleri
-- İletişim formu ile ziyaretçi mesajı gönderme
-- Bülten aboneliği
-- Admin dashboard üzerinde genel proje özeti
-- Ürün, kategori, servis, servis detayı, şef, galeri, mesaj ve abone yönetimi
-- API üzerinden CRUD işlemleri
+- 📊 Ana sayfada dinamik ürün, kategori, şef ve referans sayıları
+- 🛍️ Ürünlerin kategori ve fiyat bilgileriyle listelenmesi
+- 📖 Hakkımızda, servisler, ekip, referanslar ve galeri bölümleri
+- 📩 İletişim formu ile ziyaretçi mesajı gönderme
+- 📧 Bülten aboneliği
+- 📊 Admin dashboard üzerinde genel proje özeti
+- ⚙️ Ürün, kategori, servis, servis detayı, şef, galeri, mesaj ve abone yönetimi
+- 🔄 API üzerinden CRUD işlemleri
 
-## Veritabanı
+## 🗄️ Veritabanı
 
 Proje Entity Framework Core ile SQL Server kullanır.
 
-## API Katmanı
+## 🔌 API Katmanı
 
 `BakerApi` projesi uygulamanın veri sağlayıcı katmanıdır. Controllerlar veritabanındaki tabloları dış dünyaya REST endpointleri olarak açar.
 
 Başlıca controllerlar:
 
-- `ProductsController`: Ürün listeleme, ürün-kategori ilişkili listeleme, ürün sayısı, ekleme, güncelleme, silme
-- `CategoryController`: Kategori listeleme, kategori sayısı, ekleme, güncelleme, silme
-- `ChefController`: Şef listeleme, şef sayısı, ekleme, güncelleme, silme
-- `ServiceController`: Servisleri ve servis detaylarını listeleme
-- `ServiceDetailController`: Servislere bağlı detay maddelerini yönetme
-- `GalleryController`: Galeri görsellerini yönetme
-- `ContactController`: Ziyaretçi mesajlarını alma ve yönetme
-- `SubscribeController`: Bülten abonelerini yönetme
-- `TestimonialController`: Referans/yorum kayıtlarını yönetme
-- `AboutController` ve `AboutDetailController`: Hakkımızda alanı ve detay maddelerini yönetme
-- `AddressInfoController`: Adres ve iletişim bilgilerini yönetme
+- 📦 `ProductsController`: Ürün listeleme, ürün-kategori ilişkili listeleme, ürün sayısı, ekleme, güncelleme, silme
+- 🗂️ `CategoryController`: Kategori listeleme, kategori sayısı, ekleme, güncelleme, silme
+- 👨‍🍳 `ChefController`: Şef listeleme, şef sayısı, ekleme, güncelleme, silme
+- 🛎️ `ServiceController`: Servisleri ve servis detaylarını listeleme
+- 📄 `ServiceDetailController`: Servislere bağlı detay maddelerini yönetme
+- 🖼️ `GalleryController`: Galeri görsellerini yönetme
+- 💬 `ContactController`: Ziyaretçi mesajlarını alma ve yönetme
+- 📧 `SubscribeController`: Bülten abonelerini yönetme
+- ⭐ `TestimonialController`: Referans/yorum kayıtlarını yönetme
+- 📖 `AboutController` ve `AboutDetailController`: Hakkımızda alanı ve detay maddelerini yönetme
+- 📍 `AddressInfoController`: Adres ve iletişim bilgilerini yönetme
 
-## Web UI Katmanı
+## 🖥️ Web UI Katmanı
 
 `BakerWebUI`, MVC yapısında hazırlanmıştır. Vitrin sayfası `DefaultController` ve View Component yapılarıyla oluşturulur. Admin tarafında ise her yönetim alanı için ayrı controller bulunur.
 
 Önemli View Componentler:
 
-- `_DefaultNavbarComponentPartial`: Site navigasyonu
-- `_DefaultFeatureComponentPartial`: Hero alanı
-- `_DefaultStatisticComponentPartial`: Ürün, şef, kategori ve referans sayıları
-- `_DefaultAboutComponentPartial`: Hakkımızda bölümü
-- `_DefaultProductComponentPartial`: Ürün kartları
-- `_DefaultServiceComponentPartial`: Servisler bölümü
-- `_DefaultChefComponentPartial`: Ekip/şef bölümü
-- `_DefaultTestimonialComponentPartial`: Referanslar bölümü
-- `_DefaultFooterComponentPartial`: Footer ve galeri
-
+- 🧭 `_DefaultNavbarComponentPartial`: Site navigasyonu
+- 🌟 `_DefaultFeatureComponentPartial`: Hero alanı
+- 📊 `_DefaultStatisticComponentPartial`: Ürün, şef, kategori ve referans sayıları
+- 📖 `_DefaultAboutComponentPartial`: Hakkımızda bölümü
+- 🛍️ `_DefaultProductComponentPartial`: Ürün kartları
+- 🛎️ `_DefaultServiceComponentPartial`: Servisler bölümü
+- 👨‍🍳 `_DefaultChefComponentPartial`: Ekip/şef bölümü
+- 💬 `_DefaultTestimonialComponentPartial`: Referanslar bölümü
+- 🔚 `_DefaultFooterComponentPartial`: Footer ve galeri
+---
 ## Ekran Görüntüleri ve Açıklamalar
 
 ### 1. Ana Sayfa Hero Alanı
 
-<<<<<<< HEAD
 ![Ana Sayfa Hero](docs/screenshots/1.png)
-=======
-![Uploading 1.png…]()
->>>>>>> e4ce406232a8885edbf29ec9f23b5aaac02a0d46
 
 Ziyaretçinin siteye ilk girdiğinde gördüğü karşılama alanıdır. Üst menü, sosyal medya bağlantıları, telefon bilgisi ve marka başlığı burada yer alır. Hero görseli fırın temasını güçlendirir ve kullanıcıyı ana içeriklere yönlendirir.
 
 ### 2. İstatistik Alanı
 
-<<<<<<< HEAD
 ![İstatistik Alanı](docs/screenshots/2.png)
-=======
-![Uploading 2.png…]()
->>>>>>> e4ce406232a8885edbf29ec9f23b5aaac02a0d46
 
 Bu bölüm API'den gelen dinamik sayıları gösterir. Ürün sayısı, şef sayısı, kategori sayısı ve referans sayısı ViewBag üzerinden çekilir. Böylece admin panelinde yapılan değişiklikler ana sayfadaki istatistiklere yansır.
 
 ### 3. Hakkımızda Bölümü
 
-<<<<<<< HEAD
 ![Hakkımızda Bölümü](docs/screenshots/3.png)
-=======
-![Uploading 3.png…]()
->>>>>>> e4ce406232a8885edbf29ec9f23b5aaac02a0d46
 
-Pastanenin/fırının hikayesini anlatan alandır. Başlık, açıklama, görsel ve hizmet vurguları API'deki `About` ve `AboutDetail` kayıtlarıyla yönetilir.
+Pastanenin/fırının hakkımızda kısmını anlatan alandır. 
 
 ### 4. Ürünler Bölümü
 
-<<<<<<< HEAD
 ![Ürünler Bölümü](docs/screenshots/4.png)
-=======
-![Uploading 4.png…]()
->>>>>>> e4ce406232a8885edbf29ec9f23b5aaac02a0d46
 
-Ürünler kart yapısıyla listelenir. Her kartta ürün adı, fiyatı, kategori adı ve ürün görseli bulunur. Ürünler API'deki `Products/with_category` endpointinden kategori bilgisiyle birlikte gelir.
+Ürünler kart yapısıyla listelenir. Her kartta ürün adı, fiyatı, kategori adı ve ürün görseli bulunur. 
 
 ### 5. Servisler Bölümü
 
-<<<<<<< HEAD
 ![Servisler Bölümü](docs/screenshots/5.png)
-=======
-![Uploading 5.png…]()
->>>>>>> e4ce406232a8885edbf29ec9f23b5aaac02a0d46
 
-Fırının sunduğu hizmetleri açıklar. Kaliteli ürünler, kişiye özel üretim, online sipariş ve adrese teslimat gibi hizmet detayları `Service` ve `ServiceDetail` kayıtlarıyla yönetilir.
+Fırının sunduğu hizmetleri açıklar. 
 
 ### 6. Ekip Bölümü
 
-<<<<<<< HEAD
 ![Ekip Bölümü](docs/screenshots/6.png)
-=======
-![Uploading 6.png…]()
->>>>>>> e4ce406232a8885edbf29ec9f23b5aaac02a0d46
 
-Şef ve çalışan bilgilerini gösterir. Her kartta kişinin adı, görevi ve fotoğrafı bulunur. Bu alan `Chef` kayıtlarından beslenir.
+Şef ve çalışan bilgilerini gösterir. 
 
 ### 7. Referanslar ve Bülten Aboneliği
 
-<<<<<<< HEAD
 ![Referanslar ve Bülten](docs/screenshots/7.png)
-=======
-![Uploading 7.png…]()
->>>>>>> e4ce406232a8885edbf29ec9f23b5aaac02a0d46
 
-Müşteri yorumları ve bülten aboneliği formu burada bulunur. Referanslar `Testimonial` tablosundan gelir. Abonelik formuna girilen e-posta adresleri `Subscribe` endpointine gönderilir.
+Müşteri yorumları ve bülten aboneliği formu burada bulunur.
 
 ### 8. Footer ve Galeri
 
-<<<<<<< HEAD
 ![Footer ve Galeri](docs/screenshots/8.png)
-=======
-![Uploading 8.png…]()
->>>>>>> e4ce406232a8885edbf29ec9f23b5aaac02a0d46
 
-Footer alanında adres, telefon, e-posta, hızlı bağlantılar, sosyal medya ikonları ve fotoğraf galerisi yer alır. Galeri görselleri `Gallery` kayıtlarından gelir.
-
+Footer alanında adres, telefon, e-posta, hızlı bağlantılar, sosyal medya ikonları ve fotoğraf galerisi yer alır. 
 ### 9. İletişim Formu
 
-<<<<<<< HEAD
 ![İletişim Formu](docs/screenshots/9.png)
-=======
-![Uploading 9.png…]()
->>>>>>> e4ce406232a8885edbf29ec9f23b5aaac02a0d46
 
-Ziyaretçiler ad, e-posta, konu ve mesaj bilgileriyle iletişim formu gönderebilir. Form gönderildiğinde veriler `Contact` endpointine kaydedilir.
+Ziyaretçiler ad, e-posta, konu ve mesaj bilgileriyle iletişim formu gönderebilir.
 
 ### 10. Başarılı Mesaj Bildirimi
-<<<<<<< HEAD
 
 ![Başarılı Mesaj Bildirimi](docs/screenshots/10.png)
-=======
-![Uploading 10.png…]()
->>>>>>> e4ce406232a8885edbf29ec9f23b5aaac02a0d46
 
 İletişim formu başarıyla gönderildiğinde kullanıcıya SweetAlert tarzında başarılı mesaj bildirimi gösterilir.
 
@@ -289,25 +248,4 @@ Ziyaretçilerin iletişim formundan gönderdiği mesajlar burada listelenir. Adm
 
 Bültene abone olan kullanıcıların e-posta adresleri listelenir. Admin gereksiz kayıtları silebilir.
 
-## Yönetim Panelinde Bulunan Modüller
 
-- Dashboard
-- Hakkımızda Yönetimi
-- Ürün Yönetimi
-- Kategori Yönetimi
-- Servis Yönetimi
-- Şef Yönetimi
-- Galeri Yönetimi
-- Mesaj Yönetimi
-- Adres Yönetimi
-- Abone Yönetimi
-
-## Notlar
-
-- Proje `net6.0` hedef frameworkü ile geliştirilmiştir.
-- API ve Web UI ayrı projeler olduğu için ikisinin de çalışır durumda olması gerekir.
-- Görsel URL alanlarında proje içindeki statik dosya yolları veya dış URL'ler kullanılabilir.
-
-## Geliştirici
-
-Bu proje eğitim ve portfolyo amacıyla geliştirilmiş bir fırın/pastane web sitesi ve admin paneli uygulamasıdır.
