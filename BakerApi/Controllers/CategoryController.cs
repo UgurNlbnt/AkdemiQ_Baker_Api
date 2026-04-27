@@ -23,6 +23,13 @@ namespace BakerApi.Controllers
             return Ok(categories);
         }
 
+        [HttpGet("CountCategory")]
+        public IActionResult GetCountCategory()
+        {
+            var totalCategory = _context.Categories.Count();
+            return Ok(totalCategory);
+        }
+
         // ID'YE GÖRE GETİR (EKLENDİ)
         [HttpGet("{id}")]
         public IActionResult GetCategory(int id)

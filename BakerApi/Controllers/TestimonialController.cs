@@ -22,6 +22,13 @@ namespace BakerApi.Controllers
             return Ok(testimonials);
         }
 
+        [HttpGet("CountTestimonial")]
+        public IActionResult GetCountTestimonial()
+        {
+            var totalTestimonial = _context.Testimonials.Count();
+            return Ok(totalTestimonial);
+        }
+
         [HttpPost]
         public IActionResult Create(Testimonial testimonial)
         {
